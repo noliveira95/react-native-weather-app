@@ -7,6 +7,7 @@ import {
   View,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import IconText from "../components/IconText";
 
 const City = () => {
   return (
@@ -18,8 +19,13 @@ const City = () => {
         <Text style={[styles.cityName, styles.cityText]}>New York, NY</Text>
         <Text style={[styles.countryName, styles.cityText]}>United States</Text>
         <View style={styles.populationWrapper}>
-          <Feather name="user" size={48} color="black" />
-          <Text style={styles.populationText}>9000</Text>
+          <IconText
+            iconName="user"
+            iconSize={48}
+            iconColor="black"
+            text="8.4M"
+            textStyles={styles.populationText}
+          />
         </View>
         <View style={styles.riseSetWrapper}>
           <Feather name="sunrise" size={48} color="black" />
@@ -61,7 +67,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginLeft: 10,
     color: "black",
-    fontWeight: "bold",
   },
   riseSetWrapper: {
     flexDirection: "row",
@@ -72,7 +77,6 @@ const styles = StyleSheet.create({
   riseSetText: {
     fontSize: 20,
     color: "black",
-    fontWeight: "bold",
   },
 });
 
