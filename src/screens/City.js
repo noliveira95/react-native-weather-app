@@ -28,10 +28,20 @@ const City = () => {
           />
         </View>
         <View style={styles.riseSetWrapper}>
-          <Feather name="sunrise" size={48} color="black" />
-          <Text style={styles.riseSetText}>07:12 AM</Text>
-          <Feather name="sunset" size={48} color="black" />
-          <Text style={styles.riseSetText}>17:04 PM</Text>
+          <IconText
+            iconName="sunrise"
+            iconSize={48}
+            iconColor="black"
+            text="07:12 AM"
+            textStyles={styles.riseSetText}
+          />
+          <IconText
+            iconName="sunset"
+            iconSize={48}
+            iconColor="black"
+            text="17:04 PM"
+            textStyles={styles.riseSetText}
+          />
         </View>
       </ImageBackground>
     </SafeAreaView>
