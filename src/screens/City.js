@@ -6,41 +6,52 @@ import {
   ImageBackground,
   View,
 } from "react-native";
-import { Feather } from "@expo/vector-icons";
 import IconText from "../components/IconText";
 
 const City = () => {
+  const {
+    container,
+    cityName,
+    cityText,
+    countryName,
+    populationWrapper,
+    populationText,
+    riseSetWrapper,
+    riseSetText,
+    rowLayout,
+    imageLayout,
+  } = styles;
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={container}>
       <ImageBackground
-        style={styles.imageLayout}
+        style={imageLayout}
         source={require("../../assets/city-bg.jpg")}
       >
-        <Text style={[styles.cityName, styles.cityText]}>New York, NY</Text>
-        <Text style={[styles.countryName, styles.cityText]}>United States</Text>
-        <View style={styles.populationWrapper}>
+        <Text style={[cityName, cityText]}>New York, NY</Text>
+        <Text style={[countryName, cityText]}>United States</Text>
+        <View style={[populationWrapper, rowLayout]}>
           <IconText
             iconName="user"
             iconSize={48}
             iconColor="black"
             text="8.4M"
-            textStyles={styles.populationText}
+            textStyles={populationText}
           />
         </View>
-        <View style={styles.riseSetWrapper}>
+        <View style={[riseSetWrapper, rowLayout]}>
           <IconText
             iconName="sunrise"
             iconSize={48}
             iconColor="black"
             text="07:12 AM"
-            textStyles={styles.riseSetText}
+            textStyles={[riseSetText, rowLayout]}
           />
           <IconText
             iconName="sunset"
             iconSize={48}
             iconColor="black"
             text="17:04 PM"
-            textStyles={styles.riseSetText}
+            textStyles={[riseSetText, rowLayout]}
           />
         </View>
       </ImageBackground>
@@ -68,9 +79,7 @@ const styles = StyleSheet.create({
     color: "black",
   },
   populationWrapper: {
-    flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center",
     marginTop: 32,
   },
   populationText: {
@@ -79,14 +88,16 @@ const styles = StyleSheet.create({
     color: "black",
   },
   riseSetWrapper: {
-    flexDirection: "row",
     justifyContent: "space-around",
-    alignItems: "center",
     marginTop: 32,
   },
   riseSetText: {
     fontSize: 20,
     color: "black",
+  },
+  rowLayout: {
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
 
