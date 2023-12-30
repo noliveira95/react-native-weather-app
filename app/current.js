@@ -3,6 +3,7 @@ import { View, Text, SafeAreaView, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
 import RowText from "../src/components/RowText";
+import { weatherType } from "../src/utils/weatherType";
 
 const CurrentWeather = () => {
   // Styles
@@ -34,7 +35,7 @@ const CurrentWeather = () => {
       </View>
       <RowText
         messageOne="Sunny"
-        messageTwo="It's perfect t-shirt weather."
+        messageTwo={weatherType["Thunderstorm"].message}
         containerStyles={bodyWrapper}
         messageOneStyles={description}
         messageTwoStyles={message}

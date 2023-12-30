@@ -4,7 +4,7 @@ import { Feather } from "@expo/vector-icons";
 
 const RootLayout = () => {
   return (
-    <Tabs>
+    <Tabs initialRouteName="current">
       <Tabs.Screen
         name="current"
         options={{
