@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tabs } from "expo-router";
 import { Feather } from "@expo/vector-icons";
+import { ActivityIndicator, View, StyleSheet } from "react-native";
 
 const RootLayout = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  if (isLoading) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color="blue" />
+      </View>
+    );
+  }
   return (
     <Tabs>
       <Tabs.Screen
@@ -47,5 +56,12 @@ const RootLayout = () => {
     </Tabs>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+  },
+});
 
 export default RootLayout;
