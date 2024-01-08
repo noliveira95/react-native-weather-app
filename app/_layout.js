@@ -4,12 +4,12 @@ import { Feather } from "@expo/vector-icons";
 
 const RootLayout = () => {
   return (
-    <Tabs initialRouteName="current">
+    <Tabs>
       <Tabs.Screen
-        name="current"
+        name="index"
         options={{
           href: {
-            pathname: "/current",
+            pathname: "/",
           },
           tabBarIcon: ({ color }) => (
             <Feather name="sun" size={24} color={color} />
