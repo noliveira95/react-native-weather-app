@@ -9,6 +9,7 @@ import {
 import IconText from "../src/components/IconText";
 
 const City = () => {
+  // Styles
   const {
     container,
     cityName,
@@ -21,6 +22,7 @@ const City = () => {
     rowLayout,
     imageLayout,
   } = styles;
+
   return (
     <SafeAreaView style={container}>
       <ImageBackground

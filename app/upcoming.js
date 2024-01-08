@@ -60,7 +60,10 @@ const UpcomingWeather = () => {
       />
     );
   };
+
+  // Styles
   const { container, image } = styles;
+
   return (
     <SafeAreaView style={container}>
       <ImageBackground
