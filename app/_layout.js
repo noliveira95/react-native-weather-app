@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Tabs } from "expo-router";
 import { Feather } from "@expo/vector-icons";
 import { ActivityIndicator, View, StyleSheet } from "react-native";
-
 import * as Location from "expo-location";
+import { WEATHER_API_KEY } from "@env";
 
 // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
@@ -24,9 +24,9 @@ const RootLayout = () => {
     })();
   }, []);
 
-  if (location) {
-    console.log(location);
-  }
+  // if (location) {
+  //   console.log(location);
+  // }
 
   // let text = "Waiting..";
   // if (error) {
