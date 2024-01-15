@@ -5,12 +5,26 @@ import { ActivityIndicator, View, StyleSheet } from "react-native";
 import * as Location from "expo-location";
 import { WEATHER_API_KEY } from "@env";
 
-// api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-
 const RootLayout = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [location, setLocation] = useState(null);
+  const [lat, setLat] = useState([]);
+  const [long, setLong] = useState([]);
   const [error, setError] = useState(null);
+  const [weatherData, setWeatherData] = useState([]);
+
+  const fetchWeatherData = async () => {
+    try {
+      const res = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${WEATHER_API_KEY}`
+      );
+      const data = await res.json();
+      setWeatherData(data);
+    } catch (err) {
+      setError("There was a problem retrieving the weather data");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     (async () => {
@@ -20,20 +34,15 @@ const RootLayout = () => {
       }
 
       let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
+      setLat(`${location.coords.latitude}`);
+      setLong(`${location.coords.longitude}`);
+      await fetchWeatherData();
     })();
-  }, []);
+  }, [lat, long]);
 
-  // if (location) {
-  //   console.log(location);
-  // }
-
-  // let text = "Waiting..";
-  // if (error) {
-  //   text = error;
-  // } else if (location) {
-  //   text = JSON.stringify(location);
-  // }
+  if (weatherData) {
+    console.log(weatherData);
+  }
 
   if (isLoading) {
     return (
