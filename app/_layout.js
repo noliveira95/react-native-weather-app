@@ -9,55 +9,56 @@ const RootLayout = () => {
 
   console.log(isLoading, error, weatherData);
 
-  if (isLoading) {
+  if (weatherData && weatherData.list) {
     return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color="blue" />
-      </View>
+      <Tabs>
+        <Tabs.Screen
+          name="index"
+          options={{
+            href: {
+              pathname: "/",
+            },
+            tabBarIcon: ({ color }) => (
+              <Feather name="sun" size={24} color={color} />
+            ),
+            tabBarLabel: "Current",
+            title: "Current Weather",
+          }}
+        />
+        <Tabs.Screen
+          name="upcoming"
+          options={{
+            href: {
+              pathname: "/upcoming",
+            },
+            tabBarIcon: ({ color }) => (
+              <Feather name="calendar" size={24} color={color} />
+            ),
+            tabBarLabel: "Upcoming",
+            title: "Upcoming Weather",
+          }}
+        />
+        <Tabs.Screen
+          name="location"
+          options={{
+            href: {
+              pathname: "/location",
+            },
+            tabBarIcon: ({ color }) => (
+              <Feather name="map-pin" size={24} color={color} />
+            ),
+            tabBarLabel: "Location",
+            title: "Location Details",
+          }}
+        />
+      </Tabs>
     );
   }
+
   return (
-    <Tabs>
-      <Tabs.Screen
-        name="index"
-        options={{
-          href: {
-            pathname: "/",
-          },
-          tabBarIcon: ({ color }) => (
-            <Feather name="sun" size={24} color={color} />
-          ),
-          tabBarLabel: "Current",
-          title: "Current Weather",
-        }}
-      />
-      <Tabs.Screen
-        name="upcoming"
-        options={{
-          href: {
-            pathname: "/upcoming",
-          },
-          tabBarIcon: ({ color }) => (
-            <Feather name="calendar" size={24} color={color} />
-          ),
-          tabBarLabel: "Upcoming",
-          title: "Upcoming Weather",
-        }}
-      />
-      <Tabs.Screen
-        name="location"
-        options={{
-          href: {
-            pathname: "/location",
-          },
-          tabBarIcon: ({ color }) => (
-            <Feather name="map-pin" size={24} color={color} />
-          ),
-          tabBarLabel: "Location",
-          title: "Location Details",
-        }}
-      />
-    </Tabs>
+    <View style={styles.container}>
+      <ActivityIndicator size="large" color="blue" />
+    </View>
   );
 };
 
