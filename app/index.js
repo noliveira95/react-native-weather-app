@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, SafeAreaView, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
-
 import RowText from "../src/components/RowText";
 import { weatherType } from "../src/utils/weatherType";
 import { useStore } from "../src/hooks/useStore";
