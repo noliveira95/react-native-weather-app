@@ -3,6 +3,7 @@ import { Tabs } from "expo-router";
 import { Feather } from "@expo/vector-icons";
 import { ActivityIndicator, View, StyleSheet } from "react-native";
 import { useGetWeather } from "../src/hooks/useGetWeather";
+import ErrorScreen from "../src/components/screens/ErrorScreen";
 
 const RootLayout = () => {
   let [isLoading, error, weatherData] = useGetWeather();
@@ -55,9 +56,17 @@ const RootLayout = () => {
     );
   }
 
+  // if (error) {
+  //   return <ErrorScreen />;
+  // }
+
   return (
     <View style={styles.container}>
-      <ActivityIndicator size="large" color="blue" />
+      {isLoading ? (
+        <ActivityIndicator size="large" color="blue" />
+      ) : (
+        <ErrorScreen />
+      )}
     </View>
   );
 };
