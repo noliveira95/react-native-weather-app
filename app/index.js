@@ -21,24 +21,41 @@ const CurrentWeather = () => {
   } = styles;
 
   const { weatherData } = useStore();
+  const {
+    main: { temp, feels_like, temp_min, temp_max },
+    weather,
+  } = weatherData.list[0];
+
+  const weatherCondition = weather[0].main;
 
   return (
-    <SafeAreaView style={wrapper}>
+    <SafeAreaView
+      style={[
+        wrapper,
+        {
+          backgroundColor: weatherType[weatherCondition].backgroundColor,
+        },
+      ]}
+    >
       <View style={container}>
-        <Feather name="sun" size={100} color="black" />
-        <Text style={currentTemp}>{weatherData.list[0].main.temp}</Text>
-        <Text style={feelsLikeTemp}>Feels like 5</Text>
+        <Feather
+          name={weatherType[weatherCondition].icon}
+          size={100}
+          color="white"
+        />
+        <Text style={currentTemp}>{temp}</Text>
+        <Text style={feelsLikeTemp}>{`Feels like: ${feels_like}`}</Text>
         <RowText
-          messageOne="High: 8 "
-          messageTwo="Low: 6"
+          messageOne={`High: ${temp_max} `}
+          messageTwo={`Low: ${temp_min}`}
           containerStyles={highLowTempWrapper}
           messageOneStyles={highLowTemp}
           messageTwoStyles={highLowTemp}
         />
       </View>
       <RowText
-        messageOne="Sunny"
-        messageTwo={weatherType["Thunderstorm"].message}
+        messageOne={weather[0].description}
+        messageTwo={weatherType[weatherCondition].message}
         containerStyles={bodyWrapper}
         messageOneStyles={description}
         messageTwoStyles={message}

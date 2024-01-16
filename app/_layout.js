@@ -7,7 +7,7 @@ import { useGetWeather } from "../src/hooks/useGetWeather";
 const RootLayout = () => {
   let [isLoading, error, weatherData] = useGetWeather();
 
-  console.log(isLoading, error, weatherData);
+  // console.log(isLoading, error, weatherData);
 
   if (weatherData && weatherData.list) {
     return (
