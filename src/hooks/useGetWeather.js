@@ -1,13 +1,21 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import * as Location from "expo-location";
 import { WEATHER_API_KEY } from "@env";
+import { useStore } from "./useStore";
 
 export const useGetWeather = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [lat, setLat] = useState([]);
-  const [long, setLong] = useState([]);
-  const [error, setError] = useState(null);
-  const [weatherData, setWeatherData] = useState([]);
+  const {
+    lat,
+    long,
+    error,
+    weatherData,
+    isLoading,
+    setLat,
+    setLong,
+    setError,
+    setWeatherData,
+    setIsLoading,
+  } = useStore();
 
   const fetchWeatherData = async () => {
     try {
