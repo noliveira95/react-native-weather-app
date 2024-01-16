@@ -7,6 +7,8 @@ import {
   View,
 } from "react-native";
 import IconText from "../src/components/IconText";
+import { useStore } from "../src/hooks/useStore";
+import dayjs from "dayjs";
 
 const City = () => {
   // Styles
@@ -23,20 +25,23 @@ const City = () => {
     imageLayout,
   } = styles;
 
+  const { weatherData } = useStore();
+  const { name, country, population, sunrise, sunset } = weatherData.city;
+
   return (
     <SafeAreaView style={container}>
       <ImageBackground
         style={imageLayout}
         source={require("../assets/city-bg.jpg")}
       >
-        <Text style={[cityName, cityText]}>New York, NY</Text>
-        <Text style={[countryName, cityText]}>United States</Text>
+        <Text style={[cityName, cityText]}>{name}</Text>
+        <Text style={[countryName, cityText]}>{country}</Text>
         <View style={[populationWrapper, rowLayout]}>
           <IconText
             iconName="user"
             iconSize={48}
             iconColor="black"
-            text="8.4M"
+            text={`Population: ${population}`}
             textStyles={populationText}
           />
         </View>
@@ -45,14 +50,14 @@ const City = () => {
             iconName="sunrise"
             iconSize={48}
             iconColor="black"
-            text="07:12 AM"
+            text={dayjs(sunrise).format("h:mm:ss a")}
             textStyles={[riseSetText, rowLayout]}
           />
           <IconText
             iconName="sunset"
             iconSize={48}
             iconColor="black"
-            text="17:04 PM"
+            text={dayjs(sunset).format("h:mm:ss a")}
             textStyles={[riseSetText, rowLayout]}
           />
         </View>
