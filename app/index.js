@@ -32,13 +32,13 @@ const CurrentWeather = () => {
       style={[
         wrapper,
         {
-          backgroundColor: weatherType[weatherCondition].backgroundColor,
+          backgroundColor: weatherType[weatherCondition]?.backgroundColor,
         },
       ]}
     >
       <View style={container}>
         <Feather
-          name={weatherType[weatherCondition].icon}
+          name={weatherType[weatherCondition]?.icon}
           size={100}
           color="white"
         />
@@ -53,8 +53,8 @@ const CurrentWeather = () => {
         />
       </View>
       <RowText
-        messageOne={weather[0].description}
-        messageTwo={weatherType[weatherCondition].message}
+        messageOne={weather[0]?.description}
+        messageTwo={weatherType[weatherCondition]?.message}
         containerStyles={bodyWrapper}
         messageOneStyles={description}
         messageTwoStyles={message}
