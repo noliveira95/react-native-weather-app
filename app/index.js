@@ -4,6 +4,7 @@ import { Feather } from "@expo/vector-icons";
 
 import RowText from "../src/components/RowText";
 import { weatherType } from "../src/utils/weatherType";
+import { useStore } from "../src/hooks/useStore";
 
 const CurrentWeather = () => {
   // Styles
@@ -19,11 +20,13 @@ const CurrentWeather = () => {
     message,
   } = styles;
 
+  const { weatherData } = useStore();
+
   return (
     <SafeAreaView style={wrapper}>
       <View style={container}>
         <Feather name="sun" size={100} color="black" />
-        <Text style={currentTemp}>6</Text>
+        <Text style={currentTemp}>{weatherData.list[0].main.temp}</Text>
         <Text style={feelsLikeTemp}>Feels like 5</Text>
         <RowText
           messageOne="High: 8 "
