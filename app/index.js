@@ -65,7 +65,6 @@ const CurrentWeather = () => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: "pink",
     flex: 1,
   },
   container: {
@@ -74,33 +73,36 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   currentTemp: {
-    color: "black",
+    color: "white",
     fontSize: 48,
+    marginVertical: 12,
   },
   feelsLikeTemp: {
-    color: "black",
-    fontSize: 32,
+    color: "white",
+    fontSize: 24,
+    marginBottom: 12,
   },
   highLowTempWrapper: {
     flexDirection: "row",
   },
   highLowTemp: {
-    color: "black",
+    color: "white",
     fontSize: 20,
   },
   bodyWrapper: {
     justifyContent: "flex-end",
-    alignItems: "flex-start",
+    alignItems: "center",
     paddingLeft: 24,
     marginBottom: 40,
   },
   description: {
-    color: "black",
+    color: "white",
     fontSize: 24,
   },
   message: {
-    color: "black",
+    color: "white",
     fontSize: 20,
+    margin: 12,
   },
 });
 
