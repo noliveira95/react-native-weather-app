@@ -10,7 +10,7 @@ const RootLayout = () => {
 
   // console.log(isLoading, error, weatherData);
 
-  if (weatherData && weatherData.list) {
+  if (weatherData && weatherData.list && !isLoading) {
     return (
       <Tabs>
         <Tabs.Screen
@@ -62,10 +62,10 @@ const RootLayout = () => {
 
   return (
     <View style={styles.container}>
-      {isLoading ? (
-        <ActivityIndicator size="large" color="blue" />
-      ) : (
+      {error ? (
         <ErrorScreen />
+      ) : (
+        <ActivityIndicator size="large" color="blue" />
       )}
     </View>
   );
