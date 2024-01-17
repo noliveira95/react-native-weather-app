@@ -4,10 +4,7 @@ import { Feather } from "@expo/vector-icons";
 import { weatherType } from "../utils/weatherType";
 import dayjs from "dayjs";
 
-const ListItem = (props) => {
-  // Props
-  const { dt_txt, min, max, condition } = props;
-
+const ListItem = React.memo(({ dt_txt, min, max, condition }) => {
   // Styles
   const { item, date, temp, dateTextWrapper } = styles;
 
@@ -21,7 +18,7 @@ const ListItem = (props) => {
       <Text style={temp}>{`${Math.round(min)}° / ${Math.round(max)}°`}</Text>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   item: {
