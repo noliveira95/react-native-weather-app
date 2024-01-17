@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Tabs } from "expo-router";
 import { Feather } from "@expo/vector-icons";
 import { ActivityIndicator, View, StyleSheet } from "react-native";
@@ -7,8 +7,6 @@ import ErrorScreen from "../src/components/screens/ErrorScreen";
 
 const RootLayout = () => {
   let [isLoading, error, weatherData] = useGetWeather();
-
-  // console.log(isLoading, error, weatherData);
 
   if (weatherData && weatherData.list && !isLoading) {
     return (
