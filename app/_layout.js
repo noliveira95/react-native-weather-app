@@ -56,10 +56,6 @@ const RootLayout = () => {
     );
   }
 
-  // if (error) {
-  //   return <ErrorScreen />;
-  // }
-
   return (
     <View style={styles.container}>
       {error ? (
